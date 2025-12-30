@@ -1,0 +1,253 @@
+/* ---------- Reset & variables ---------- */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #d64545;
+  --bg: #eee;
+  --card-bg: #fff;
+  --muted: #769cbb;
+}
+
+/* ---------- Base layout ---------- */
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+h1 {
+  margin: 0;
+  padding: 18px 12px;
+  background: var(--card-bg);
+  text-align: center;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 700;
+}
+
+.guess-game {
+  width: min(1100px, 96%);
+  margin: 20px auto;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(12px, 2vw, 20px);
+  flex: 1 0 auto;
+}
+
+.game-area {
+  flex: 1 1 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clue-area {
+  padding: 14px;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.inputs > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.inputs > div span {
+  font-size: clamp(18px, 2.4vw, 36px);
+  margin-right: 16px;
+}
+
+.inputs .hidden {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.inputs input {
+  margin: 0 6px;
+  width: clamp(48px, 8vw, 92px);
+  height: clamp(48px, 8vw, 92px);
+  text-align: center;
+  font-size: clamp(20px, 6vw, 64px);
+  caret-color: var(--primary-color);
+  background: var(--card-bg);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) inset;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.12);
+}
+
+.inputs input:focus {
+  outline: 3px solid rgba(39, 48, 63, 0.06);
+  outline-offset: 2px;
+}
+
+.inputs input.in-place {
+  background: #ffeb8a;
+  border-bottom: 3px solid #f5d400;
+  color: #222;
+}
+.inputs input.not-in-place {
+  background: #9ae6b4;
+  border-bottom: 3px solid #2f9e44;
+  color: #062014;
+}
+.inputs input.no {
+  background: #27303f;
+  border-bottom: 3px solid #27303f;
+  color: #fff;
+}
+
+/* control area */
+.control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.control .check {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+}
+.control .hint {
+  background: var(--muted);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+}
+.control .restart {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+}
+.control button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-left: auto;
+  padding: 12px 14px;
+  background: #27303f;
+  color: #fff;
+  border-radius: 8px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 360px;
+  font-weight: 700;
+}
+.message span {
+  color: var(--primary-color);
+  display: block;
+  margin-top: 8px;
+}
+
+.key-colors {
+  width: 260px;
+  flex: 0 0 260px;
+}
+.key-color {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.key {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.key.in-place {
+  background: #ffeb8a;
+}
+.key.not-in-place {
+  background: #9ae6b4;
+}
+.key.no {
+  background: #27303f;
+}
+.key-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 8px;
+  background: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 880px) {
+  .guess-game {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .key-colors {
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    gap: 8px;
+  }
+  .key-color {
+    flex: 1;
+  }
+  .message {
+    margin-left: 0;
+    width: 100%;
+    order: 3;
+  }
+  .control {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .guess-game {
+    padding: 8px;
+  }
+  .inputs input {
+    width: clamp(40px, 12vw, 72px);
+    height: clamp(40px, 12vw, 72px);
+  }
+  .inputs > div span {
+    font-size: 18px;
+  }
+  .control button {
+    padding: 8px 12px;
+  }
+  .key-colors {
+    display: none;
+  }
+}
+
+/* End of file */
