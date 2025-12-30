@@ -19,7 +19,7 @@ A fun word guessing game built using **HTML, CSS, and JavaScript**.
 - Responsive design
 
 ## 🚀 Live Demo
-👉 https://your-username.github.io/guess-the-word-game/
+👉 https://yb122.github.io/guess-the-word-game/
 
 ## 🛠️ Technologies Used
 - HTML
